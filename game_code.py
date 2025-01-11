@@ -214,8 +214,8 @@ function reset_game() {
     
     enable_board();
     update_turn_indicator();
-    this.getField("B_start").display = 0;
-    this.getField("B_reset_scores").display = 1;
+    this.getField("B_start").display = 0; 
+    this.getField("B_reset_scores").display = 1;  
 }
 
 function start_game() {
@@ -226,11 +226,13 @@ function reset_scores() {
     this.submitForm();
 }
 
+// Initialize the game
 update_turn_indicator();
 update_score();
+// Initially disable the board
 enable_board();
-this.getField("B_reset_scores").display = 1;
-this.getField("B_start").display = 0;
+this.getField("B_reset_scores").display = 1;  // Initially show Reset Scores button
+this.getField("B_start").display = 0;  // Hide Start button
 
 endstream
 endobj
@@ -387,7 +389,6 @@ for row in range(3):
         cell = cell.replace("###RECT###", f"{x} {y} {x + CELL_SIZE} {y + CELL_SIZE}")
         
         add_field(cell)
-
 turn_text_box = """
 ###IDX### obj
 <<
@@ -395,8 +396,8 @@ turn_text_box = """
   /FT /Tx
   /Ff 1
   /MK <<
-    /BG [ 0.8 0.8 0.8 ]
-    /BC [ 0.0 0.0 0.0 ]
+    /BG [ 0.8 0.8 0.8 ]  % Light grey background for box
+    /BC [ 0.0 0.0 0.0 ]  % Black border for box
     /S /S
   >>
   /DA (/F1 16 Tf 0 0 0 rg)
@@ -422,8 +423,8 @@ score_text_box = """
   /FT /Tx
   /Ff 1
   /MK <<
-    /BG [ 0.8 0.8 0.8 ]
-    /BC [ 0.0 0.0 0.0 ]
+    /BG [ 0.8 0.8 0.8 ]  % Light grey background for box
+    /BC [ 0.0 0.0 0.0 ]  % Black border for box
     /S /S
   >>
   /DA (/F1 16 Tf 0 0 0 rg)
@@ -461,11 +462,15 @@ add_field(reset_scores_script)
 reset_scores_button = RESET_SCORES_BUTTON
 reset_scores_button = reset_scores_button.replace("###IDX###", f"{obj_idx_ctr} 0")
 reset_scores_button = reset_scores_button.replace("###SCRIPT_IDX###", f"{obj_idx_ctr-1} 0")
-reset_scores_button = reset_scores_button.replace("###RECT###", f"{GRID_OFF_X} {GRID_OFF_Y - 280} {GRID_OFF_X + 240} {GRID_OFF_Y - 250}")
+reset_scores_button = reset_scores_button.replace("###RECT###", f"{GRID_OFF_X} {GRID_OFF_Y - 290} {GRID_OFF_X + 240} {GRID_OFF_Y - 260}")
 add_field(reset_scores_button)
 
-pdf_output = PDF_FILE_TEMPLATE.replace("###FIELD_LIST###", "".join([f"{x} 0 R" for x in field_indexes]))
-pdf_output = pdf_output.replace("###FIELDS###", fields_text)
 
-with open("tic_tac_toe.pdf", "w") as file:
-    file.write(pdf_output)
+filled_pdf = PDF_FILE_TEMPLATE.replace("###FIELDS###", fields_text)
+filled_pdf = filled_pdf.replace("###FIELD_LIST###", " ".join([f"{i} 0 R" for i in field_indexes]))
+
+with open("tictactoe.pdf", "w") as pdffile:
+    pdffile.write(filled_pdf)
+
+
+

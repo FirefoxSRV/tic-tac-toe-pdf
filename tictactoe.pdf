@@ -5,7 +5,7 @@
 1 0 obj
 <<
   /AcroForm <<
-    /Fields [ 50 0 R51 0 R52 0 R53 0 R54 0 R55 0 R56 0 R57 0 R58 0 R59 0 R60 0 R61 0 R62 0 R63 0 R64 0 R65 0 R66 0 R67 0 R68 0 R69 0 R70 0 R71 0 R72 0 R73 0 R ]
+    /Fields [ 50 0 R 51 0 R 52 0 R 53 0 R 54 0 R 55 0 R 56 0 R 57 0 R 58 0 R 59 0 R 60 0 R 61 0 R 62 0 R 63 0 R 64 0 R 65 0 R 66 0 R 67 0 R 68 0 R 69 0 R 70 0 R 71 0 R 72 0 R 73 0 R ]
   >>
   /Pages 2 0 R
   /OpenAction 17 0 R
@@ -25,7 +25,7 @@ endobj
 %% Annots Page 1 (also used as overall fields list)
 21 0 obj
 [
-  50 0 R51 0 R52 0 R53 0 R54 0 R55 0 R56 0 R57 0 R58 0 R59 0 R60 0 R61 0 R62 0 R63 0 R64 0 R65 0 R66 0 R67 0 R68 0 R69 0 R70 0 R71 0 R72 0 R73 0 R
+  50 0 R 51 0 R 52 0 R 53 0 R 54 0 R 55 0 R 56 0 R 57 0 R 58 0 R 59 0 R 60 0 R 61 0 R 62 0 R 63 0 R 64 0 R 65 0 R 66 0 R 67 0 R 68 0 R 69 0 R 70 0 R 71 0 R 72 0 R 73 0 R
 ]
 endobj
 
@@ -333,8 +333,8 @@ endobj
   /FT /Tx
   /Ff 1
   /MK <<
-    /BG [ 0.8 0.8 0.8 ]
-    /BC [ 0.0 0.0 0.0 ]
+    /BG [ 0.8 0.8 0.8 ]  % Light grey background for box
+    /BC [ 0.0 0.0 0.0 ]  % Black border for box
     /S /S
   >>
   /DA (/F1 16 Tf 0 0 0 rg)
@@ -355,8 +355,8 @@ endobj
   /FT /Tx
   /Ff 1
   /MK <<
-    /BG [ 0.8 0.8 0.8 ]
-    /BC [ 0.0 0.0 0.0 ]
+    /BG [ 0.8 0.8 0.8 ]  % Light grey background for box
+    /BC [ 0.0 0.0 0.0 ]  % Black border for box
     /S /S
   >>
   /DA (/F1 16 Tf 0 0 0 rg)
@@ -427,7 +427,7 @@ endobj
   >>
   /P 16 0 R
   /Rect [
-    200 220 440 250
+    200 210 440 240
   ]
   /Subtype /Widget
   /T (B_reset_scores)
@@ -509,6 +509,7 @@ function update_score() {
 }
 
 function check_winner() {
+    // Check rows
     for (var i = 0; i < 3; i++) {
         if (game_board[i][0] !== '' && 
             game_board[i][0] === game_board[i][1] && 
@@ -517,6 +518,7 @@ function check_winner() {
         }
     }
     
+    // Check columns
     for (var j = 0; j < 3; j++) {
         if (game_board[0][j] !== '' && 
             game_board[0][j] === game_board[1][j] && 
@@ -525,6 +527,7 @@ function check_winner() {
         }
     }
     
+    // Check diagonals
     if (game_board[0][0] !== '' && 
         game_board[0][0] === game_board[1][1] && 
         game_board[1][1] === game_board[2][2]) {
@@ -619,8 +622,8 @@ function reset_game() {
     
     enable_board();
     update_turn_indicator();
-    this.getField("B_start").display = 0;
-    this.getField("B_reset_scores").display = 1;
+    this.getField("B_start").display = 0;  // Hide Start button
+    this.getField("B_reset_scores").display = 1;  // Show Reset Scores button
 }
 
 function start_game() {
@@ -628,14 +631,16 @@ function start_game() {
 }
 
 function reset_scores() {
-    this.submitForm();
+    this.submitForm(); // This will refresh the page
 }
 
+// Initialize the game
 update_turn_indicator();
 update_score();
+// Initially disable the board
 enable_board();
-this.getField("B_reset_scores").display = 1;
-this.getField("B_start").display = 0;
+this.getField("B_reset_scores").display = 1;  // Initially show Reset Scores button
+this.getField("B_start").display = 0;  // Hide Start button
 
 endstream
 endobj
