@@ -50,9 +50,22 @@ endobj
   ]
   /Parent 2 0 R
   /Resources <<
+    /Font <<
+      /F1 22 0 R
+    >>
   >>
   /Rotate 0
   /Type /Page
+>>
+endobj
+
+22 0 obj
+<<
+  /BaseFont /Helvetica
+  /Encoding /WinAnsiEncoding
+  /Name /F1
+  /Subtype /Type1
+  /Type /Font
 >>
 endobj
 
@@ -87,11 +100,10 @@ function update_turn_indicator() {
 }
 
 function update_score() {
-    this.getField("T_score").value = `X: ${score_x} - O: ${score_o}`;
+    this.getField("T_score").value = `Score - X: ${score_x} | O: ${score_o}`;
 }
 
 function check_winner() {
-    // Check rows
     for (var i = 0; i < 3; i++) {
         if (game_board[i][0] !== '' && 
             game_board[i][0] === game_board[i][1] && 
@@ -100,7 +112,6 @@ function check_winner() {
         }
     }
     
-    // Check columns
     for (var j = 0; j < 3; j++) {
         if (game_board[0][j] !== '' && 
             game_board[0][j] === game_board[1][j] && 
@@ -109,7 +120,6 @@ function check_winner() {
         }
     }
     
-    // Check diagonals
     if (game_board[0][0] !== '' && 
         game_board[0][0] === game_board[1][1] && 
         game_board[1][1] === game_board[2][2]) {
@@ -139,18 +149,32 @@ function check_draw() {
 function make_move(row, col) {
     if (game_board[row][col] === '') {
         game_board[row][col] = current_player;
-        this.getField(`B_${row}_${col}`).buttonSetCaption(current_player);
+        this.getField(`B_${row}_${col}`).value = current_player;
         
         var winner = check_winner();
         if (winner) {
             if (winner === 'X') score_x++;
             else score_o++;
             update_score();
-            app.alert(`Player ${winner} wins!`);
-            disable_board();
+            reset_game();
+            app.alert({
+                cMsg: `Player ${winner} wins!`,
+                cTitle: "Game Over",
+                nIcon: 3,
+                nType: 0,
+                oDoc: this,
+                cExec: "start_game();"
+            });
         } else if (check_draw()) {
-            app.alert("It's a draw!");
-            disable_board();
+            reset_game();
+            app.alert({
+                cMsg: "It's a draw!",
+                cTitle: "Game Over",
+                nIcon: 3,
+                nType: 0,
+                oDoc: this,
+                cExec: "start_game();"
+            });
         } else {
             current_player = current_player === 'X' ? 'O' : 'X';
             update_turn_indicator();
@@ -184,17 +208,29 @@ function reset_game() {
     
     for (var i = 0; i < 3; i++) {
         for (var j = 0; j < 3; j++) {
-            this.getField(`B_${i}_${j}`).buttonSetCaption('');
+            this.getField(`B_${i}_${j}`).value = '';
         }
     }
     
     enable_board();
     update_turn_indicator();
+    this.getField("B_start").display = 0;
+    this.getField("B_reset_scores").display = 1;
 }
 
-// Initialize the game
+function start_game() {
+    reset_game();
+}
+
+function reset_scores() {
+    this.submitForm();
+}
+
 update_turn_indicator();
 update_score();
+enable_board();
+this.getField("B_reset_scores").display = 1;
+this.getField("B_start").display = 0;
 
 endstream
 endobj
@@ -215,13 +251,15 @@ CELL_BUTTON = """
     /S /JavaScript
   >>
   /F 4
-  /FT /Btn
-  /Ff 65536
+  /FT /Tx
+  /Ff 1
   /MK <<
     /BG [
       0.9 0.9 0.9
     ]
   >>
+  /DA (/F1 40 Tf 0 0 0 rg)
+  /Q 1
   /P 16 0 R
   /Rect [
     ###RECT###
@@ -233,7 +271,7 @@ CELL_BUTTON = """
 endobj
 """
 
-RESET_BUTTON = """
+START_BUTTON = """
 ###IDX### obj
 <<
   /A <<
@@ -245,7 +283,7 @@ RESET_BUTTON = """
   /Ff 65536
   /MK <<
     /BG [
-      0.8 0.8 1.0
+      0.8 1.0 0.8
     ]
     /CA (Reset Game)
   >>
@@ -254,7 +292,34 @@ RESET_BUTTON = """
     ###RECT###
   ]
   /Subtype /Widget
-  /T (B_reset)
+  /T (B_start)
+  /Type /Annot
+>>
+endobj
+"""
+
+RESET_SCORES_BUTTON = """
+###IDX### obj
+<<
+  /A <<
+    /JS ###SCRIPT_IDX### R
+    /S /JavaScript
+  >>
+  /F 4
+  /FT /Btn
+  /Ff 65536
+  /MK <<
+    /BG [
+      1.0 0.8 0.8
+    ]
+    /CA (Reset Scores)
+  >>
+  /P 16 0 R
+  /Rect [
+    ###RECT###
+  ]
+  /Subtype /Widget
+  /T (B_reset_scores)
   /Type /Annot
 >>
 endobj
@@ -268,6 +333,7 @@ TEXT_FIELD = """
   /Ff 1
   /MK <<
   >>
+  /DA (/F1 12 Tf 0 0 0 rg)
   /P 16 0 R
   /Rect [
     ###RECT###
@@ -289,10 +355,9 @@ endstream
 endobj
 """
 
-# Constants for layout
 CELL_SIZE = 80
 GRID_OFF_X = 200
-GRID_OFF_Y = 400
+GRID_OFF_Y = 500
 
 fields_text = ""
 field_indexes = []
@@ -304,16 +369,13 @@ def add_field(field):
     field_indexes.append(obj_idx_ctr)
     obj_idx_ctr += 1
 
-# Add game cells
 for row in range(3):
     for col in range(3):
-        # Add click handler script
         script = SCRIPT_OBJ
         script = script.replace("###IDX###", f"{obj_idx_ctr} 0")
         script = script.replace("###CONTENT###", f"make_move({row}, {col});")
         add_field(script)
         
-        # Add cell button
         cell = CELL_BUTTON
         cell = cell.replace("###IDX###", f"{obj_idx_ctr} 0")
         cell = cell.replace("###SCRIPT_IDX###", f"{obj_idx_ctr-1} 0")
@@ -326,37 +388,84 @@ for row in range(3):
         
         add_field(cell)
 
+turn_text_box = """
+###IDX### obj
+<<
+  /F 4
+  /FT /Tx
+  /Ff 1
+  /MK <<
+    /BG [ 0.8 0.8 0.8 ]
+    /BC [ 0.0 0.0 0.0 ]
+    /S /S
+  >>
+  /DA (/F1 16 Tf 0 0 0 rg)
+  /P 16 0 R
+  /Rect [
+    ###RECT###
+  ]
+  /Subtype /Widget
+  /T (T_turn)
+  /V (Current Turn: X)
+  /Type /Annot
+>>
+endobj
+"""
+turn_text_box = turn_text_box.replace("###IDX###", f"{obj_idx_ctr} 0")
+turn_text_box = turn_text_box.replace("###RECT###", f"{GRID_OFF_X} {GRID_OFF_Y + 160} {GRID_OFF_X + 240} {GRID_OFF_Y + 190}")
+add_field(turn_text_box)
 
-reset_script = SCRIPT_OBJ
-reset_script = reset_script.replace("###IDX###", f"{obj_idx_ctr} 0")
-reset_script = reset_script.replace("###CONTENT###", "reset_game();")
-add_field(reset_script)
+score_text_box = """
+###IDX### obj
+<<
+  /F 4
+  /FT /Tx
+  /Ff 1
+  /MK <<
+    /BG [ 0.8 0.8 0.8 ]
+    /BC [ 0.0 0.0 0.0 ]
+    /S /S
+  >>
+  /DA (/F1 16 Tf 0 0 0 rg)
+  /P 16 0 R
+  /Rect [
+    ###RECT###
+  ]
+  /Subtype /Widget
+  /T (T_score)
+  /V (Score - X: 0 | O: 0)
+  /Type /Annot
+>>
+endobj
+"""
+score_text_box = score_text_box.replace("###IDX###", f"{obj_idx_ctr} 0")
+score_text_box = score_text_box.replace("###RECT###", f"{GRID_OFF_X} {GRID_OFF_Y + 120} {GRID_OFF_X + 240} {GRID_OFF_Y + 150}")
+add_field(score_text_box)
 
+start_script = SCRIPT_OBJ
+start_script = start_script.replace("###IDX###", f"{obj_idx_ctr} 0")
+start_script = start_script.replace("###CONTENT###", "start_game();")
+add_field(start_script)
 
-reset_button = RESET_BUTTON
-reset_button = reset_button.replace("###IDX###", f"{obj_idx_ctr} 0")
-reset_button = reset_button.replace("###SCRIPT_IDX###", f"{obj_idx_ctr-1} 0")
-reset_button = reset_button.replace("###RECT###", f"{GRID_OFF_X} {GRID_OFF_Y + 50} {GRID_OFF_X + 240} {GRID_OFF_Y + 80}")
-add_field(reset_button)
+start_button = START_BUTTON
+start_button = start_button.replace("###IDX###", f"{obj_idx_ctr} 0")
+start_button = start_button.replace("###SCRIPT_IDX###", f"{obj_idx_ctr-1} 0")
+start_button = start_button.replace("###RECT###", f"{GRID_OFF_X} {GRID_OFF_Y - 320} {GRID_OFF_X + 240} {GRID_OFF_Y - 290}")
+add_field(start_button)
 
-turn_text = TEXT_FIELD
-turn_text = turn_text.replace("###IDX###", f"{obj_idx_ctr} 0")
-turn_text = turn_text.replace("###NAME###", "T_turn")
-turn_text = turn_text.replace("###VALUE###", "Current Turn: X")
-turn_text = turn_text.replace("###RECT###", f"{GRID_OFF_X} {GRID_OFF_Y + 100} {GRID_OFF_X + 240} {GRID_OFF_Y + 130}")
-add_field(turn_text)
+reset_scores_script = SCRIPT_OBJ
+reset_scores_script = reset_scores_script.replace("###IDX###", f"{obj_idx_ctr} 0")
+reset_scores_script = reset_scores_script.replace("###CONTENT###", "reset_scores();")
+add_field(reset_scores_script)
 
+reset_scores_button = RESET_SCORES_BUTTON
+reset_scores_button = reset_scores_button.replace("###IDX###", f"{obj_idx_ctr} 0")
+reset_scores_button = reset_scores_button.replace("###SCRIPT_IDX###", f"{obj_idx_ctr-1} 0")
+reset_scores_button = reset_scores_button.replace("###RECT###", f"{GRID_OFF_X} {GRID_OFF_Y - 280} {GRID_OFF_X + 240} {GRID_OFF_Y - 250}")
+add_field(reset_scores_button)
 
-score_text = TEXT_FIELD
-score_text = score_text.replace("###IDX###", f"{obj_idx_ctr} 0")
-score_text = score_text.replace("###NAME###", "T_score")
-score_text = score_text.replace("###VALUE###", "X: 0 - O: 0")
-score_text = score_text.replace("###RECT###", f"{GRID_OFF_X} {GRID_OFF_Y + 140} {GRID_OFF_X + 240} {GRID_OFF_Y + 170}")
-add_field(score_text)
+pdf_output = PDF_FILE_TEMPLATE.replace("###FIELD_LIST###", "".join([f"{x} 0 R" for x in field_indexes]))
+pdf_output = pdf_output.replace("###FIELDS###", fields_text)
 
-
-filled_pdf = PDF_FILE_TEMPLATE.replace("###FIELDS###", fields_text)
-filled_pdf = filled_pdf.replace("###FIELD_LIST###", " ".join([f"{i} 0 R" for i in field_indexes]))
-
-with open("tictactoe.pdf", "w") as pdffile:
-    pdffile.write(filled_pdf)
+with open("tic_tac_toe.pdf", "w") as file:
+    file.write(pdf_output)
