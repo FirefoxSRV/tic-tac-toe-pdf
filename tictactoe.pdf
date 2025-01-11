@@ -1,0 +1,554 @@
+
+%PDF-1.6
+
+% Root
+1 0 obj
+<<
+  /AcroForm <<
+    /Fields [ 50 0 R 51 0 R 52 0 R 53 0 R 54 0 R 55 0 R 56 0 R 57 0 R 58 0 R 59 0 R 60 0 R 61 0 R 62 0 R 63 0 R 64 0 R 65 0 R 66 0 R 67 0 R 68 0 R 69 0 R 70 0 R 71 0 R ]
+  >>
+  /Pages 2 0 R
+  /OpenAction 17 0 R
+  /Type /Catalog
+>>
+endobj
+
+2 0 obj
+<<
+  /Count 1
+  /Kids [
+    16 0 R
+  ]
+  /Type /Pages
+>>
+
+%% Annots Page 1 (also used as overall fields list)
+21 0 obj
+[
+  50 0 R 51 0 R 52 0 R 53 0 R 54 0 R 55 0 R 56 0 R 57 0 R 58 0 R 59 0 R 60 0 R 61 0 R 62 0 R 63 0 R 64 0 R 65 0 R 66 0 R 67 0 R 68 0 R 69 0 R 70 0 R 71 0 R
+]
+endobj
+
+
+50 0 obj
+<< >>
+stream
+make_move(0, 0);
+endstream
+endobj
+
+51 0 obj
+<<
+  /A <<
+    /JS 50 0 R
+    /S /JavaScript
+  >>
+  /F 4
+  /FT /Btn
+  /Ff 65536
+  /MK <<
+    /BG [
+      0.9 0.9 0.9
+    ]
+  >>
+  /P 16 0 R
+  /Rect [
+    200 400 280 480
+  ]
+  /Subtype /Widget
+  /T (B_0_0)
+  /Type /Annot
+>>
+endobj
+
+52 0 obj
+<< >>
+stream
+make_move(0, 1);
+endstream
+endobj
+
+53 0 obj
+<<
+  /A <<
+    /JS 52 0 R
+    /S /JavaScript
+  >>
+  /F 4
+  /FT /Btn
+  /Ff 65536
+  /MK <<
+    /BG [
+      0.9 0.9 0.9
+    ]
+  >>
+  /P 16 0 R
+  /Rect [
+    280 400 360 480
+  ]
+  /Subtype /Widget
+  /T (B_0_1)
+  /Type /Annot
+>>
+endobj
+
+54 0 obj
+<< >>
+stream
+make_move(0, 2);
+endstream
+endobj
+
+55 0 obj
+<<
+  /A <<
+    /JS 54 0 R
+    /S /JavaScript
+  >>
+  /F 4
+  /FT /Btn
+  /Ff 65536
+  /MK <<
+    /BG [
+      0.9 0.9 0.9
+    ]
+  >>
+  /P 16 0 R
+  /Rect [
+    360 400 440 480
+  ]
+  /Subtype /Widget
+  /T (B_0_2)
+  /Type /Annot
+>>
+endobj
+
+56 0 obj
+<< >>
+stream
+make_move(1, 0);
+endstream
+endobj
+
+57 0 obj
+<<
+  /A <<
+    /JS 56 0 R
+    /S /JavaScript
+  >>
+  /F 4
+  /FT /Btn
+  /Ff 65536
+  /MK <<
+    /BG [
+      0.9 0.9 0.9
+    ]
+  >>
+  /P 16 0 R
+  /Rect [
+    200 320 280 400
+  ]
+  /Subtype /Widget
+  /T (B_1_0)
+  /Type /Annot
+>>
+endobj
+
+58 0 obj
+<< >>
+stream
+make_move(1, 1);
+endstream
+endobj
+
+59 0 obj
+<<
+  /A <<
+    /JS 58 0 R
+    /S /JavaScript
+  >>
+  /F 4
+  /FT /Btn
+  /Ff 65536
+  /MK <<
+    /BG [
+      0.9 0.9 0.9
+    ]
+  >>
+  /P 16 0 R
+  /Rect [
+    280 320 360 400
+  ]
+  /Subtype /Widget
+  /T (B_1_1)
+  /Type /Annot
+>>
+endobj
+
+60 0 obj
+<< >>
+stream
+make_move(1, 2);
+endstream
+endobj
+
+61 0 obj
+<<
+  /A <<
+    /JS 60 0 R
+    /S /JavaScript
+  >>
+  /F 4
+  /FT /Btn
+  /Ff 65536
+  /MK <<
+    /BG [
+      0.9 0.9 0.9
+    ]
+  >>
+  /P 16 0 R
+  /Rect [
+    360 320 440 400
+  ]
+  /Subtype /Widget
+  /T (B_1_2)
+  /Type /Annot
+>>
+endobj
+
+62 0 obj
+<< >>
+stream
+make_move(2, 0);
+endstream
+endobj
+
+63 0 obj
+<<
+  /A <<
+    /JS 62 0 R
+    /S /JavaScript
+  >>
+  /F 4
+  /FT /Btn
+  /Ff 65536
+  /MK <<
+    /BG [
+      0.9 0.9 0.9
+    ]
+  >>
+  /P 16 0 R
+  /Rect [
+    200 240 280 320
+  ]
+  /Subtype /Widget
+  /T (B_2_0)
+  /Type /Annot
+>>
+endobj
+
+64 0 obj
+<< >>
+stream
+make_move(2, 1);
+endstream
+endobj
+
+65 0 obj
+<<
+  /A <<
+    /JS 64 0 R
+    /S /JavaScript
+  >>
+  /F 4
+  /FT /Btn
+  /Ff 65536
+  /MK <<
+    /BG [
+      0.9 0.9 0.9
+    ]
+  >>
+  /P 16 0 R
+  /Rect [
+    280 240 360 320
+  ]
+  /Subtype /Widget
+  /T (B_2_1)
+  /Type /Annot
+>>
+endobj
+
+66 0 obj
+<< >>
+stream
+make_move(2, 2);
+endstream
+endobj
+
+67 0 obj
+<<
+  /A <<
+    /JS 66 0 R
+    /S /JavaScript
+  >>
+  /F 4
+  /FT /Btn
+  /Ff 65536
+  /MK <<
+    /BG [
+      0.9 0.9 0.9
+    ]
+  >>
+  /P 16 0 R
+  /Rect [
+    360 240 440 320
+  ]
+  /Subtype /Widget
+  /T (B_2_2)
+  /Type /Annot
+>>
+endobj
+
+68 0 obj
+<< >>
+stream
+reset_game();
+endstream
+endobj
+
+69 0 obj
+<<
+  /A <<
+    /JS 68 0 R
+    /S /JavaScript
+  >>
+  /F 4
+  /FT /Btn
+  /Ff 65536
+  /MK <<
+    /BG [
+      0.8 0.8 1.0
+    ]
+    /CA (Reset Game)
+  >>
+  /P 16 0 R
+  /Rect [
+    200 450 440 480
+  ]
+  /Subtype /Widget
+  /T (B_reset)
+  /Type /Annot
+>>
+endobj
+
+70 0 obj
+<<
+  /F 4
+  /FT /Tx
+  /Ff 1
+  /MK <<
+  >>
+  /P 16 0 R
+  /Rect [
+    200 500 440 530
+  ]
+  /Subtype /Widget
+  /T (T_turn)
+  /V (Current Turn: X)
+  /Type /Annot
+>>
+endobj
+
+71 0 obj
+<<
+  /F 4
+  /FT /Tx
+  /Ff 1
+  /MK <<
+  >>
+  /P 16 0 R
+  /Rect [
+    200 540 440 570
+  ]
+  /Subtype /Widget
+  /T (T_score)
+  /V (X: 0 - O: 0)
+  /Type /Annot
+>>
+endobj
+
+
+%% Page 1
+16 0 obj
+<<
+  /Annots 21 0 R
+  /Contents 3 0 R
+  /CropBox [
+    0.0
+    0.0
+    612.0
+    792.0
+  ]
+  /MediaBox [
+    0.0
+    0.0
+    612.0
+    792.0
+  ]
+  /Parent 2 0 R
+  /Resources <<
+  >>
+  /Rotate 0
+  /Type /Page
+>>
+endobj
+
+3 0 obj
+<< >>
+stream
+endstream
+endobj
+
+17 0 obj
+<<
+  /JS 42 0 R
+  /S /JavaScript
+>>
+endobj
+
+42 0 obj
+<< >>
+stream
+
+var current_player = 'X';
+var score_x = 0;
+var score_o = 0;
+var game_board = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', '']
+];
+
+function update_turn_indicator() {
+    this.getField("T_turn").value = `Current Turn: ${current_player}`;
+}
+
+function update_score() {
+    this.getField("T_score").value = `X: ${score_x} - O: ${score_o}`;
+}
+
+function check_winner() {
+    // Check rows
+    for (var i = 0; i < 3; i++) {
+        if (game_board[i][0] !== '' && 
+            game_board[i][0] === game_board[i][1] && 
+            game_board[i][1] === game_board[i][2]) {
+            return game_board[i][0];
+        }
+    }
+    
+    // Check columns
+    for (var j = 0; j < 3; j++) {
+        if (game_board[0][j] !== '' && 
+            game_board[0][j] === game_board[1][j] && 
+            game_board[1][j] === game_board[2][j]) {
+            return game_board[0][j];
+        }
+    }
+    
+    // Check diagonals
+    if (game_board[0][0] !== '' && 
+        game_board[0][0] === game_board[1][1] && 
+        game_board[1][1] === game_board[2][2]) {
+        return game_board[0][0];
+    }
+    
+    if (game_board[0][2] !== '' && 
+        game_board[0][2] === game_board[1][1] && 
+        game_board[1][1] === game_board[2][0]) {
+        return game_board[0][2];
+    }
+    
+    return null;
+}
+
+function check_draw() {
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < 3; j++) {
+            if (game_board[i][j] === '') {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+function make_move(row, col) {
+    if (game_board[row][col] === '') {
+        game_board[row][col] = current_player;
+        this.getField(`B_${row}_${col}`).buttonSetCaption(current_player);
+        
+        var winner = check_winner();
+        if (winner) {
+            if (winner === 'X') score_x++;
+            else score_o++;
+            update_score();
+            app.alert(`Player ${winner} wins!`);
+            disable_board();
+        } else if (check_draw()) {
+            app.alert("It's a draw!");
+            disable_board();
+        } else {
+            current_player = current_player === 'X' ? 'O' : 'X';
+            update_turn_indicator();
+        }
+    }
+}
+
+function disable_board() {
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < 3; j++) {
+            this.getField(`B_${i}_${j}`).readonly = true;
+        }
+    }
+}
+
+function enable_board() {
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < 3; j++) {
+            this.getField(`B_${i}_${j}`).readonly = false;
+        }
+    }
+}
+
+function reset_game() {
+    current_player = 'X';
+    game_board = [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+    ];
+    
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < 3; j++) {
+            this.getField(`B_${i}_${j}`).buttonSetCaption('');
+        }
+    }
+    
+    enable_board();
+    update_turn_indicator();
+}
+
+// Initialize the game
+update_turn_indicator();
+update_score();
+
+endstream
+endobj
+
+trailer
+<<
+  /Root 1 0 R
+>>
+
+%%EOF
